@@ -6,7 +6,7 @@ name: release
 #   git tag dotnet-v0.1.0 && git push origin dotnet-v0.1.0 -> Opensms to NuGet
 #   git tag rust-v0.1.0   && git push origin rust-v0.1.0   -> opensms to crates.io
 #   git tag ruby-v0.1.0   && git push origin ruby-v0.1.0   -> opensms to RubyGems
-#   git tag java-v0.1.0   -> tests only until Maven Central publishing is configured
+#   git tag java-v0.1.0   && git push origin java-v0.1.0   -> io.opensms:opensms-java to Maven Central
 #   git tag php-v0.1.0 / swift-v0.1.0 / go-v0.1.0 -> tests only; these clients are
 #   consumed from their own mirror repos (see RELEASING.md)
 # Nothing publishes until the registry accounts and secrets in RELEASING.md exist.
@@ -120,8 +120,8 @@ jobs:
         with:
           working-directory: packages/ruby
 
-  # ---- Java: tests gate the tag; Maven Central publishing is not configured yet ----
-  java:
+  # ---- Java -> Maven Central via the Sonatype Central Portal (signed with the release key) ----
+  maven:
     if: startsWith(github.ref, 'refs/tags/java-v')
     runs-on: ubuntu-latest
     defaults:
@@ -133,7 +133,16 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - run: mvn -B package
+          server-id: central
+          server-username: MAVEN_CENTRAL_USERNAME
+          server-password: MAVEN_CENTRAL_PASSWORD
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - run: mvn -B -P release deploy
+        env:
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
   # ---- Git-resolved clients: the tag is the release; gate on tests ----
   php:

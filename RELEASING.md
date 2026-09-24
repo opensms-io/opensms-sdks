@@ -2,7 +2,7 @@
 
 Every client is versioned and released on its own, by pushing a tag with its prefix. The
 [release workflow](.github/workflows/release.yml) runs that package's tests first and only
-publishes when they pass. None of the packages has been published yet.
+publishes when they pass.
 
 | Client | Tag | Where it goes | Needs before the first release |
 |---|---|---|---|
@@ -11,7 +11,7 @@ publishes when they pass. None of the packages has been published yet.
 | .NET | `dotnet-vX.Y.Z` | NuGet `Opensms` | NuGet account, repository secret `NUGET_API_KEY` |
 | Rust | `rust-vX.Y.Z` | crates.io `opensms` | repository secret `CARGO_REGISTRY_TOKEN` |
 | Ruby | `ruby-vX.Y.Z` | RubyGems `opensms` | RubyGems trusted publisher for this repo |
-| Java | `java-vX.Y.Z` | tests only for now | Maven Central namespace `io.opensms`, signing key and publishing plugin in `pom.xml` |
+| Java | `java-vX.Y.Z` | Maven Central `io.opensms:opensms-java` | secrets `MAVEN_CENTRAL_USERNAME`, `MAVEN_CENTRAL_PASSWORD`, `MAVEN_GPG_PRIVATE_KEY`, `MAVEN_GPG_PASSPHRASE` (release key 7CB93B2A87638B627776F4DAD1A662D3F4223DA3, published on keyserver.ubuntu.com) |
 | Go | `go-vX.Y.Z` | tests only here | mirror repo `opensms-io/opensms-go`, tagged `vX.Y.Z` |
 | PHP | `php-vX.Y.Z` | tests only here | mirror repo `opensms-io/opensms-php`, registered on Packagist |
 | Swift | `swift-vX.Y.Z` | tests only here | mirror repo `opensms-io/opensms-swift`, tagged `X.Y.Z` |
