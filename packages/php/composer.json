@@ -1,0 +1,30 @@
+{
+    "name": "opensms/opensms-php",
+    "description": "Official PHP SDK for the OpenSMS prepaid SMS API.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["opensms", "sms", "otp", "messaging", "sdk", "api"],
+    "homepage": "https://opensms.io",
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Opensms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Opensms\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

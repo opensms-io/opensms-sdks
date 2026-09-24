@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Opensms</RootNamespace>
+    <AssemblyName>Opensms</AssemblyName>
+
+    <!-- NuGet package metadata -->
+    <PackageId>Opensms</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>OpenSMS</Authors>
+    <Company>OpenSMS</Company>
+    <Description>Official .NET client for the OpenSMS prepaid SMS API: messages, batches, OTP, lookups, contacts, templates, webhooks, numbers, sender IDs, compliance, wallet, pricing and analytics.</Description>
+    <PackageProjectUrl>https://opensms.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/opensms-io/opensms-sdks</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>sms;otp;messaging;opensms;africa;kenya;api</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Ship XML docs for IntelliSense, but don't demand a /// on every DTO property. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <!-- The test project lives under tests/; keep it out of the shipped package. -->
+    <Compile Remove="tests/**/*.cs" />
+    <InternalsVisibleTo Include="Opensms.Tests" />
+  </ItemGroup>
+
+</Project>

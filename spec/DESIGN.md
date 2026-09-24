@@ -5,12 +5,12 @@ exposes the SAME resources and methods over the SURFACE.md contract, with the
 same transport behaviour. Names below are canonical camelCase; each language
 applies its own idiom (snake_case for python, ruby and rust; PascalCase
 exported identifiers for go and dotnet). The structure follows the Axene
-Mailer SDKs (`/Users/user/axene/axene-sdks`), adjusted for what the OpenSMS
+Mailer SDKs, adjusted for what the OpenSMS
 API actually does.
 
 ## Package names
 
-Nothing in `/Users/user/projects/web/opensms` claims these names. The only
+No opensms repository claims these names. The only
 existing package is the private, generated `@opensms/api-client` in
 `api/sdk/typescript` (not published, `"private": true`), which these names do
 not collide with.

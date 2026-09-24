@@ -1,0 +1,43 @@
+{
+  "name": "@opensms/sdk",
+  "version": "0.1.0",
+  "description": "Official TypeScript/JavaScript SDK for the OpenSMS prepaid SMS API: messages, OTP, batches, lookups, contacts, webhooks and more.",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node scripts/cjs-package.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run test/unit.test.ts",
+    "test:live": "vitest run test/live.test.ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": ["sms", "otp", "opensms", "africa", "kenya", "messaging", "api", "sdk"],
+  "homepage": "https://opensms.io",
+  "repository": { "type": "git", "url": "git+https://github.com/opensms-io/opensms-sdks.git", "directory": "packages/typescript" },
+  "bugs": { "url": "https://github.com/opensms-io/opensms-sdks/issues" },
+  "license": "MIT",
+  "author": "OpenSMS",
+  "publishConfig": { "access": "public", "provenance": true },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+require "rake/testtask"
+require "bundler/gem_tasks"
+
+# Offline mock-transport unit tests. Never touch the network.
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/unit/**/*_test.rb"]
+  t.warning = false
+end
+
+# Live conformance scenario (spec/CONFORMANCE.md). Skips cleanly unless
+# OPENSMS_BASE_URL and OPENSMS_API_KEY are set.
+Rake::TestTask.new(:integration) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/integration/**/*_test.rb"]
+  t.warning = false
+end
+
+# Releases are tagged externally (the `ruby-v*` tag in the sdks monorepo), so
+# the release task only builds the gem and pushes it to RubyGems. Bundler's
+# default git steps are skipped because there is no per-gem git repo here.
+Rake::Task["release"].clear
+task release: ["build", "release:rubygem_push"]
+
+task default: :test

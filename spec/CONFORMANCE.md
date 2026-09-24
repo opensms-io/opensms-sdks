@@ -9,7 +9,7 @@ has email verification approved.
 
 | Variable | Required | Meaning |
 | --- | --- | --- |
-| `OPENSMS_BASE_URL` | yes | e.g. `http://127.0.0.1:18180` |
+| `OPENSMS_BASE_URL` | yes | e.g. `http://localhost:8080` for a local API |
 | `OPENSMS_API_KEY` | yes | `sk_test_` key with every scope (see SURFACE.md "Scopes") |
 | `OPENSMS_READONLY_API_KEY` | no | `sk_test_` key with only `messages:read`; enables step 29 |
 
