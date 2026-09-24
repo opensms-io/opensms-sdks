@@ -13,9 +13,6 @@ See the [monorepo README](https://github.com/opensms-io/opensms-sdks) for the ot
 dotnet add package Opensms
 ```
 
-Not yet published: until then, reference the project directly from this repo with
-`dotnet add reference packages/dotnet/Opensms.csproj`.
-
 ## Usage
 
 ```csharp

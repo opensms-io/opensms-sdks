@@ -12,9 +12,6 @@ Requires Go 1.21+. Standard library only, no dependencies. See the
 go get github.com/opensms-io/opensms-go
 ```
 
-Not tagged yet: until the first release, point your `go.mod` at this checkout instead, with
-`replace github.com/opensms-io/opensms-go => /path/to/opensms/sdks/packages/go`.
-
 ## Usage
 
 ```go

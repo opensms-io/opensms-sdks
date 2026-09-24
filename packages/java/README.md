@@ -22,8 +22,6 @@ Gradle:
 implementation("io.opensms:opensms-java:0.1.0")
 ```
 
-Not yet published to Maven Central: for now, run `mvn install` in this directory to put `io.opensms:opensms-java:0.1.0` in your local repository, then depend on it as above.
-
 ## Usage
 
 ```java

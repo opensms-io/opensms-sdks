@@ -15,9 +15,6 @@ opensms = "0.1"   # once published; for now: opensms = { path = "../../packages/
 tokio = { version = "1", features = ["full"] }
 ```
 
-Not yet published to crates.io. Until then, depend on it by path from elsewhere in this repository,
-or clone the monorepo and point `path` at `packages/rust`.
-
 ## Usage
 
 ```rust,no_run

@@ -5,12 +5,9 @@ Official Swift client for [opensms](https://opensms.io): prepaid SMS for Africa.
 Foundation `URLSession` with async/await, no third-party dependencies. Swift
 tools version 5.9, macOS 12+, iOS 15+ (Linux works through FoundationNetworking).
 
-> **Not yet published.** This package has not been tagged or released yet.
-> Until the first `swift-v*` tag exists, depend on it by local path or branch.
-
 ## Install
 
-Add the future git-tag dependency to your `Package.swift`:
+Add the package to your `Package.swift`:
 
 ```swift
 dependencies: [

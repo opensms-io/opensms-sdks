@@ -12,8 +12,6 @@ See the [monorepo README](https://github.com/opensms-io/opensms-sdks) for the ot
 pip install opensms
 ```
 
-Not yet published to PyPI: until it is, install from this repo with `pip install ./packages/python` (run from the `sdks` directory), or `pip install -e ./packages/python` for an editable install.
-
 ## Usage
 
 ```python

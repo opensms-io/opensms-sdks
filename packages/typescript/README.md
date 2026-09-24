@@ -14,9 +14,6 @@ See the [monorepo root](https://github.com/opensms-io/opensms-sdks) for the othe
 npm install @opensms/sdk
 ```
 
-Not yet published; until then install from this repository: `npm install && npm run build` in
-`packages/typescript`, then install the folder or a packed tarball (`npm pack`).
-
 ## Usage
 
 ```ts

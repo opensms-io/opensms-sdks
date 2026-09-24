@@ -10,20 +10,18 @@ backend and checked by calling every operation with a real key. All nine clients
 18 resources and 83 methods, and all pass the same live scenario in
 [`spec/CONFORMANCE.md`](spec/CONFORMANCE.md).
 
-| Language | Package | Registry | Status |
+| Language | Package | Registry | Version |
 |---|---|---|---|
-| TypeScript / JavaScript | [`@opensms/sdk`](packages/typescript) | npm | built and tested, not yet published |
-| Python | [`opensms`](packages/python) | PyPI | built and tested, not yet published |
-| Go | [`github.com/opensms-io/opensms-go`](packages/go) | git tag | built and tested, not yet tagged |
-| .NET (C#) | [`Opensms`](packages/dotnet) | NuGet | built and tested, not yet published |
-| Java | [`io.opensms:opensms-java`](packages/java) | Maven Central | built and tested, not yet published |
-| Rust | [`opensms`](packages/rust) | crates.io | built and tested, not yet published |
-| Ruby | [`opensms`](packages/ruby) | RubyGems | built and tested, not yet published |
-| PHP | [`opensms/opensms-php`](packages/php) | Packagist | built and tested, not yet published |
-| Swift | [`OpensmsSDK`](packages/swift) | SwiftPM (git tag) | built and tested, not yet tagged |
+| TypeScript / JavaScript | [`@opensms/sdk`](packages/typescript) | [npm](https://www.npmjs.com/package/@opensms/sdk) | 0.1.0 |
+| Python | [`opensms`](packages/python) | [PyPI](https://pypi.org/project/opensms/) | 0.1.0 |
+| Go | [`github.com/opensms-io/opensms-go`](packages/go) | [pkg.go.dev](https://pkg.go.dev/github.com/opensms-io/opensms-go) | 0.1.0 |
+| .NET (C#) | [`Opensms`](packages/dotnet) | [NuGet](https://www.nuget.org/packages/Opensms) | 0.1.0 |
+| Java | [`io.opensms:opensms-java`](packages/java) | [Maven Central](https://central.sonatype.com/artifact/io.opensms/opensms-java) | 0.1.0 |
+| Rust | [`opensms`](packages/rust) | [crates.io](https://crates.io/crates/opensms) | 0.1.0 |
+| Ruby | [`opensms`](packages/ruby) | [RubyGems](https://rubygems.org/gems/opensms) | 0.1.0 |
+| PHP | [`opensms/opensms-php`](packages/php) | [Packagist](https://packagist.org/packages/opensms/opensms-php) | 0.1.0 |
+| Swift | [`OpensmsSDK`](packages/swift) | SwiftPM ([opensms-swift](https://github.com/opensms-io/opensms-swift)) | 0.1.0 |
 
-Until a package is published, install it from this repository: each package README has the local
-install command.
 
 ## Quickstart
 
