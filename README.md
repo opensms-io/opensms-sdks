@@ -12,15 +12,15 @@ backend and checked by calling every operation with a real key. All nine clients
 
 | Language | Package | Registry | Version |
 |---|---|---|---|
-| TypeScript / JavaScript | [`@opensms/sdk`](packages/typescript) | [npm](https://www.npmjs.com/package/@opensms/sdk) | 0.1.0 |
-| Python | [`opensms`](packages/python) | [PyPI](https://pypi.org/project/opensms/) | 0.1.0 |
-| Go | [`github.com/opensms-io/opensms-go`](packages/go) | [pkg.go.dev](https://pkg.go.dev/github.com/opensms-io/opensms-go) | 0.1.0 |
-| .NET (C#) | [`Opensms`](packages/dotnet) | [NuGet](https://www.nuget.org/packages/Opensms) | 0.1.0 |
-| Java | [`io.opensms:opensms-java`](packages/java) | [Maven Central](https://central.sonatype.com/artifact/io.opensms/opensms-java) | 0.1.0 |
-| Rust | [`opensms`](packages/rust) | [crates.io](https://crates.io/crates/opensms) | 0.1.0 |
-| Ruby | [`opensms`](packages/ruby) | [RubyGems](https://rubygems.org/gems/opensms) | 0.1.0 |
-| PHP | [`opensms/opensms-php`](packages/php) | [Packagist](https://packagist.org/packages/opensms/opensms-php) | 0.1.0 |
-| Swift | [`OpensmsSDK`](packages/swift) | SwiftPM ([opensms-swift](https://github.com/opensms-io/opensms-swift)) | 0.1.0 |
+| TypeScript / JavaScript | [`@opensms/sdk`](packages/typescript) | [npm](https://www.npmjs.com/package/@opensms/sdk) | 0.1.1 |
+| Python | [`opensms`](packages/python) | [PyPI](https://pypi.org/project/opensms/) | 0.1.1 |
+| Go | [`github.com/opensms-io/opensms-go`](packages/go) | [pkg.go.dev](https://pkg.go.dev/github.com/opensms-io/opensms-go) | 0.1.1 |
+| .NET (C#) | [`Opensms`](packages/dotnet) | [NuGet](https://www.nuget.org/packages/Opensms) | 0.1.1 |
+| Java | [`io.opensms:opensms-java`](packages/java) | [Maven Central](https://central.sonatype.com/artifact/io.opensms/opensms-java) | 0.1.1 |
+| Rust | [`opensms`](packages/rust) | [crates.io](https://crates.io/crates/opensms) | 0.1.1 |
+| Ruby | [`opensms`](packages/ruby) | [RubyGems](https://rubygems.org/gems/opensms) | 0.1.1 |
+| PHP | [`opensms/opensms-php`](packages/php) | [Packagist](https://packagist.org/packages/opensms/opensms-php) | 0.1.1 |
+| Swift | [`OpensmsSDK`](packages/swift) | SwiftPM ([opensms-swift](https://github.com/opensms-io/opensms-swift)) | 0.1.1 |
 
 
 ## Quickstart

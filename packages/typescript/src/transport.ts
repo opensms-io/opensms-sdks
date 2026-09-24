@@ -10,7 +10,7 @@ import type { OpensmsOptions } from './models.js';
 import { uuidv4 } from './internal/uuid.js';
 import { VERSION } from './version.js';
 
-export const DEFAULT_BASE_URL = 'https://api.opensms.io';
+export const DEFAULT_BASE_URL = 'https://opensms.io';
 const DEFAULT_TIMEOUT_MS = 30_000;
 const DEFAULT_MAX_RETRIES = 2;
 const MAX_RETRY_AFTER_SECONDS = 60;

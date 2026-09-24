@@ -26,9 +26,9 @@ import java.util.function.Function;
 public final class OpensmsClient {
 
     /** SDK version, sent in {@code User-Agent: opensms-java/<version>}. */
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.1.1";
     /** Default API base URL. */
-    public static final String DEFAULT_BASE_URL = "https://api.opensms.io";
+    public static final String DEFAULT_BASE_URL = "https://opensms.io";
     /** Default per-attempt timeout. */
     public static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(30);
     /** Default number of retries after the first attempt. */
@@ -221,7 +221,7 @@ public final class OpensmsClient {
         /** @param apiKey {@code sk_test_...} or {@code sk_live_...}. @return this. */
         public Builder apiKey(String apiKey) { this.apiKey = apiKey; return this; }
 
-        /** @param baseUrl API base URL (default {@code https://api.opensms.io}). @return this. */
+        /** @param baseUrl API base URL (default {@code https://opensms.io}). @return this. */
         public Builder baseUrl(String baseUrl) { this.baseUrl = baseUrl; return this; }
 
         /** @param timeout per-attempt timeout (default 30 s). @return this. */

@@ -12,14 +12,14 @@ Maven:
 <dependency>
   <groupId>io.opensms</groupId>
   <artifactId>opensms-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
 Gradle:
 
 ```kotlin
-implementation("io.opensms:opensms-java:0.1.0")
+implementation("io.opensms:opensms-java:0.1.1")
 ```
 
 ## Usage

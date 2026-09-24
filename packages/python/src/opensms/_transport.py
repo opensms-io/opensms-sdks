@@ -24,7 +24,7 @@ from ._serialize import build_query
 from ._version import __version__
 from .errors import OpensmsError
 
-DEFAULT_BASE_URL = "https://api.opensms.io"
+DEFAULT_BASE_URL = "https://opensms.io"
 USER_AGENT = f"opensms-python/{__version__}"
 
 #: Statuses that may be retried (when the request is safe to repeat).

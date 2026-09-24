@@ -38,7 +38,7 @@ Options (all optional, passed as a second constructor argument):
 ```csharp
 var client = new OpensmsClient(apiKey, new OpensmsClientOptions
 {
-    BaseUrl = "https://api.opensms.io",   // default
+    BaseUrl = "https://opensms.io",       // default
     Timeout = TimeSpan.FromSeconds(30),   // per attempt, default 30 s
     MaxRetries = 2,                       // retries after the first attempt, 0 disables
     HttpMessageHandler = handler,         // optional, for tests or custom networking

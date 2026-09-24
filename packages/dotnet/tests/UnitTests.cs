@@ -26,7 +26,7 @@ namespace Opensms.Tests
             {
                 Assert.Equal("Bearer " + Fx.TestKey, r.Header("Authorization"));
                 Assert.Equal("application/json", r.Header("Accept"));
-                Assert.Equal("opensms-dotnet/0.1.0", r.Header("User-Agent"));
+                Assert.Equal("opensms-dotnet/0.1.1", r.Header("User-Agent"));
                 Assert.Null(r.Header("X-Workspace-ID"));
                 Assert.Null(r.Header("X-Environment"));
             }
@@ -38,7 +38,7 @@ namespace Opensms.Tests
         [Fact]
         public async Task T02_base_url_default_and_trailing_slash()
         {
-            using (var def = new OpensmsClient(Fx.TestKey)) Assert.Equal("https://api.opensms.io", def.BaseUrl);
+            using (var def = new OpensmsClient(Fx.TestKey)) Assert.Equal("https://opensms.io", def.BaseUrl);
 
             var (c, h, _) = Fx.Client(m => m.Then(HttpStatusCode.Created, Fx.MessageJson), baseUrl: "http://host//");
             await c.Messages.SendAsync(Minimal);

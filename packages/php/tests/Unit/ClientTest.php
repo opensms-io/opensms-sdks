@@ -69,7 +69,7 @@ final class ClientTest extends TestCase
             $h = $r['headers'];
             $this->assertSame('Bearer ' . self::KEY, $h['Authorization']);
             $this->assertSame('application/json', $h['Accept']);
-            $this->assertSame('opensms-php/0.1.0', $h['User-Agent']);
+            $this->assertSame('opensms-php/0.1.1', $h['User-Agent']);
             $lower = array_change_key_case($h);
             $this->assertArrayNotHasKey('x-workspace-id', $lower);
             $this->assertArrayNotHasKey('x-environment', $lower);
@@ -85,7 +85,7 @@ final class ClientTest extends TestCase
     // 2. Base URL
     public function testDefaultBaseUrl(): void
     {
-        $this->assertSame('https://api.opensms.io', (new Client(self::KEY))->baseUrl());
+        $this->assertSame('https://opensms.io', (new Client(self::KEY))->baseUrl());
     }
 
     public function testCustomBaseUrlTrailingSlash(): void

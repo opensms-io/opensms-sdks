@@ -14,7 +14,7 @@ class TransportTest < Minitest::Test
     assert_equal "Bearer #{KEY}", h["Authorization"]
     assert_equal "application/json", h["Accept"]
     assert_equal "opensms-ruby/#{Opensms::VERSION}", h["User-Agent"]
-    assert_equal "opensms-ruby/0.1.0", h["User-Agent"]
+    assert_equal "opensms-ruby/0.1.1", h["User-Agent"]
     assert_equal "application/json", h["Content-Type"]
     refute h.keys.any? { |k| k.casecmp?("X-Workspace-ID") || k.casecmp?("X-Environment") }
   end
@@ -36,10 +36,10 @@ class TransportTest < Minitest::Test
   # 2. Base URL
   def test_default_base_url
     client = Opensms::Client.new(api_key: KEY, http_client: @http)
-    assert_equal "https://api.opensms.io", client.base_url
+    assert_equal "https://opensms.io", client.base_url
     @http.enqueue(status: 200, body: { items: [], next_cursor: nil })
     client.messages.list
-    assert_equal "https://api.opensms.io/v1/messages", @http.last.url
+    assert_equal "https://opensms.io/v1/messages", @http.last.url
   end
 
   def test_trailing_slash_is_stripped

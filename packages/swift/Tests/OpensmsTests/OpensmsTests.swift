@@ -15,7 +15,7 @@ final class OpensmsTests: XCTestCase {
         recorder = SleepRecorder()
     }
 
-    private func client(baseURL: String = "https://api.opensms.io", maxRetries: Int = 2) throws -> OpensmsClient {
+    private func client(baseURL: String = "https://opensms.io", maxRetries: Int = 2) throws -> OpensmsClient {
         try OpensmsClient(
             apiKey: Self.testKey,
             baseURL: baseURL,
@@ -54,7 +54,7 @@ final class OpensmsTests: XCTestCase {
         for req in reqs {
             XCTAssertEqual(req.header("Authorization"), "Bearer \(Self.testKey)")
             XCTAssertEqual(req.header("Accept"), "application/json")
-            XCTAssertEqual(req.header("User-Agent"), "opensms-swift/0.1.0")
+            XCTAssertEqual(req.header("User-Agent"), "opensms-swift/0.1.1")
             XCTAssertNil(req.header("X-Workspace-ID"))
             XCTAssertNil(req.header("X-Environment"))
         }
@@ -64,7 +64,7 @@ final class OpensmsTests: XCTestCase {
 
     // 2. Base URL
     func testBaseURL() async throws {
-        XCTAssertEqual(try OpensmsClient(apiKey: Self.testKey).baseURL, "https://api.opensms.io")
+        XCTAssertEqual(try OpensmsClient(apiKey: Self.testKey).baseURL, "https://opensms.io")
         MockURLProtocol.enqueue(StubResponse(status: 201, json: Self.messageJSON))
         _ = try await client(baseURL: "http://host/").messages.send(.init(to: "+254700000012", text: "hi"))
         XCTAssertEqual(MockURLProtocol.capturedRequests().first?.url.absoluteString, "http://host/v1/messages")
@@ -272,7 +272,7 @@ final class OpensmsTests: XCTestCase {
         try await client().contacts.delete("c1")
         let req = try XCTUnwrap(MockURLProtocol.capturedRequests().first)
         XCTAssertEqual(req.method, "DELETE")
-        XCTAssertEqual(req.url.absoluteString, "https://api.opensms.io/v1/contacts/c1")
+        XCTAssertEqual(req.url.absoluteString, "https://opensms.io/v1/contacts/c1")
     }
 
     // 15. Pagination
@@ -308,7 +308,7 @@ final class OpensmsTests: XCTestCase {
         XCTAssertEqual(seen, 1)
         try await Task.sleep(nanoseconds: 100_000_000)
         XCTAssertEqual(MockURLProtocol.capturedRequests().count, 1, "breaking out must not fetch the next page")
-        XCTAssertTrue(MockURLProtocol.capturedRequests()[0].url.absoluteString.hasPrefix("https://api.opensms.io/v1/batches/b1/items?"))
+        XCTAssertTrue(MockURLProtocol.capturedRequests()[0].url.absoluteString.hasPrefix("https://opensms.io/v1/batches/b1/items?"))
     }
 
     // 16. Query encoding
@@ -318,8 +318,8 @@ final class OpensmsTests: XCTestCase {
         _ = try await c.senderIds.quote(countries: ["KE", "NG"])
         _ = try await c.messages.list(ListMessagesParams(status: "delivered", to: "+2547"))
         let reqs = MockURLProtocol.capturedRequests()
-        XCTAssertEqual(reqs[0].url.absoluteString, "https://api.opensms.io/v1/sender-ids/quote?countries=KE,NG")
-        XCTAssertEqual(reqs[1].url.absoluteString, "https://api.opensms.io/v1/messages?status=delivered&to=%2B2547")
+        XCTAssertEqual(reqs[0].url.absoluteString, "https://opensms.io/v1/sender-ids/quote?countries=KE,NG")
+        XCTAssertEqual(reqs[1].url.absoluteString, "https://opensms.io/v1/messages?status=delivered&to=%2B2547")
     }
 
     // 17. Path escaping and id validation
@@ -327,7 +327,7 @@ final class OpensmsTests: XCTestCase {
         MockURLProtocol.enqueue(StubResponse(json: Self.messageJSON))
         let c = try client()
         _ = try await c.messages.get("a/b")
-        XCTAssertEqual(MockURLProtocol.capturedRequests()[0].url.absoluteString, "https://api.opensms.io/v1/messages/a%2Fb")
+        XCTAssertEqual(MockURLProtocol.capturedRequests()[0].url.absoluteString, "https://opensms.io/v1/messages/a%2Fb")
         do {
             _ = try await c.messages.get("")
             XCTFail("empty id must throw")
@@ -396,7 +396,7 @@ final class OpensmsTests: XCTestCase {
         XCTAssertEqual(batch.status, "ready")
         let req = try XCTUnwrap(MockURLProtocol.capturedRequests().first)
         XCTAssertEqual(req.method, "POST")
-        XCTAssertEqual(req.url.absoluteString, "https://api.opensms.io/v1/messages/batch")
+        XCTAssertEqual(req.url.absoluteString, "https://opensms.io/v1/messages/batch")
         XCTAssertEqual(req.header("Content-Type"), "text/csv")
         XCTAssertEqual(req.body.map { String(decoding: $0, as: UTF8.self) }, csv)
         XCTAssertEqual(req.header("Idempotency-Key")?.count, 36)
@@ -438,13 +438,13 @@ final class OpensmsTests: XCTestCase {
         XCTAssertEqual(reqs[1].method, "PUT")
         XCTAssertEqual(try jsonBody(reqs[1])["enabled"] as? Bool, false)
         XCTAssertNotNil(reqs[1].header("Idempotency-Key"))
-        XCTAssertEqual(reqs[2].url.absoluteString, "https://api.opensms.io/v1/wallet/ledger?limit=1&before=10")
+        XCTAssertEqual(reqs[2].url.absoluteString, "https://opensms.io/v1/wallet/ledger?limit=1&before=10")
         XCTAssertEqual(ledger.first?.id, 7)
         XCTAssertEqual(imported.created, 1)
         XCTAssertNil(reqs[3].header("Idempotency-Key"))
         XCTAssertEqual(reqs[4].method, "PATCH")
         XCTAssertEqual(Set(try jsonBody(reqs[4]).keys), ["version", "sample_message"])
-        XCTAssertEqual(reqs[5].url.absoluteString, "https://api.opensms.io/v1/analytics/by-country?range=7d")
+        XCTAssertEqual(reqs[5].url.absoluteString, "https://opensms.io/v1/analytics/by-country?range=7d")
         XCTAssertEqual(rows.first?.deliveryRate, 100)
     }
 }

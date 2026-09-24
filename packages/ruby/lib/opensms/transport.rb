@@ -48,7 +48,7 @@ module Opensms
   # timeouts, retries with backoff, and turning non-2xx responses into
   # {Opensms::Error}. Resources depend on this, never on Net::HTTP directly.
   class Transport
-    DEFAULT_BASE_URL = "https://api.opensms.io"
+    DEFAULT_BASE_URL = "https://opensms.io"
     USER_AGENT = "opensms-ruby/#{VERSION}"
     RETRY_STATUSES = [429, 500, 502, 503, 504].freeze
     MAX_RETRY_AFTER = 60

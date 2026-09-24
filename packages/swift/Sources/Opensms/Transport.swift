@@ -5,7 +5,7 @@ import FoundationNetworking
 #endif
 
 /// SDK version, sent in the `User-Agent` header.
-public let opensmsSDKVersion = "0.1.0"
+public let opensmsSDKVersion = "0.1.1"
 
 /// An async sleeper, injectable so tests can observe retry delays without waiting.
 public typealias OpensmsSleeper = (TimeInterval) async throws -> Void
@@ -14,7 +14,7 @@ public typealias OpensmsSleeper = (TimeInterval) async throws -> Void
 public struct OpensmsOptions {
     /// Secret API key, `sk_test_...` (sandbox) or `sk_live_...` (live).
     public var apiKey: String
-    /// API base URL. Defaults to `https://api.opensms.io`. Trailing slashes are stripped.
+    /// API base URL. Defaults to `https://opensms.io`. Trailing slashes are stripped.
     public var baseURL: String
     /// Per-attempt timeout in seconds. Defaults to `30`.
     public var timeout: TimeInterval
@@ -27,7 +27,7 @@ public struct OpensmsOptions {
 
     public init(
         apiKey: String,
-        baseURL: String = "https://api.opensms.io",
+        baseURL: String = "https://opensms.io",
         timeout: TimeInterval = 30,
         maxRetries: Int = 2,
         session: URLSession = .shared,

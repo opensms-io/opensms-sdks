@@ -13,7 +13,7 @@ gem "opensms"
 
 Not on RubyGems yet: until then, install from this checkout with
 `gem "opensms", path: "path/to/sdks/packages/ruby"` in your Gemfile, or
-`gem build opensms.gemspec && gem install ./opensms-0.1.0.gem`.
+`gem build opensms.gemspec && gem install ./opensms-0.1.1.gem`.
 
 ## Usage
 

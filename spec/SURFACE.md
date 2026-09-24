@@ -17,7 +17,7 @@ two disagree this file wins and the difference is listed under **Drift**.
   environment (`sk_test_` = `sandbox`, `sk_live_` = `live`). SDKs never send
   `X-Workspace-ID` or `X-Environment`: batch and analytics reject them with
   `403` when they disagree with the key.
-- **Base URL**: `https://api.opensms.io` (see DESIGN.md for the evidence).
+- **Base URL**: `https://opensms.io` (see DESIGN.md for the evidence).
 - **Content**: JSON in, JSON out. Errors are `application/problem+json`
   (RFC 9457), see **Errors** below.
 - **Unknown request fields are rejected** (`DisallowUnknownFields` in almost
@@ -498,8 +498,10 @@ All of these returned `401` when called with a valid all-scope `sk_test_` key
 ## Drift (spec vs live code)
 
 1. `servers` in the OpenAPI file lists only `http://localhost:8080`; no
-   production URL. Production is `https://api.opensms.io` (problem `type` base
-   in `problempb`, landing page examples).
+   production URL. Production is `https://opensms.io` (`GET /v1/me` answers
+   401 there); the problem `type` base in `problempb`
+   (`https://api.opensms.io/problems/<code>`) is a separate RFC 9457 type-URI
+   namespace, not the API host, and that host has no DNS record.
 2. Insufficient scope on `/v1/messages*` and `/v1/otp/*` returns **401**
    `insufficient scope`; every other handler returns 403. Spec does not
    document 403 for messages.

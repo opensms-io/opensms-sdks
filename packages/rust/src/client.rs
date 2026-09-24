@@ -31,7 +31,7 @@ pub struct ClientBuilder {
 }
 
 impl ClientBuilder {
-    /// Override the API base URL (default `https://api.opensms.io`). Trailing
+    /// Override the API base URL (default `https://opensms.io`). Trailing
     /// slashes are stripped.
     pub fn base_url(mut self, base_url: impl Into<String>) -> Self {
         self.base_url = base_url.into();

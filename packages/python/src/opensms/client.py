@@ -59,7 +59,7 @@ class Opensms:
     Args:
         api_key: ``sk_test_...`` (sandbox) or ``sk_live_...`` (live). Checked
             locally; a malformed key raises ``ValueError`` with no request.
-        base_url: API origin, default ``https://api.opensms.io``.
+        base_url: API origin, default ``https://opensms.io``.
         timeout: Seconds per attempt (connect and read), default 30.
         max_retries: Retries after the first attempt, default 2. ``0``
             disables retries.

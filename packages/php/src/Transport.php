@@ -16,9 +16,9 @@ use InvalidArgumentException;
  */
 final class Transport
 {
-    public const VERSION = '0.1.0';
+    public const VERSION = '0.1.1';
     public const USER_AGENT = 'opensms-php/' . self::VERSION;
-    public const DEFAULT_BASE_URL = 'https://api.opensms.io';
+    public const DEFAULT_BASE_URL = 'https://opensms.io';
 
     /** Retry-After values above this many seconds are not waited for. */
     private const MAX_RETRY_AFTER = 60.0;

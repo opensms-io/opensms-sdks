@@ -149,7 +149,7 @@ async fn header_injection() {
         assert!(r.header("x-workspace-id").is_none());
         assert!(r.header("x-environment").is_none());
     }
-    assert_eq!(USER_AGENT, "opensms-rust/0.1.0");
+    assert_eq!(USER_AGENT, "opensms-rust/0.1.1");
     assert_eq!(reqs[0].header("content-type"), Some("application/json"));
     assert!(reqs[1].header("content-type").is_none());
 }
@@ -158,7 +158,7 @@ async fn header_injection() {
 #[tokio::test]
 async fn base_url_default_and_trailing_slash() {
     let d = Client::new(KEY).unwrap();
-    assert_eq!(d.base_url(), "https://api.opensms.io");
+    assert_eq!(d.base_url(), "https://opensms.io");
     let (c, t, _) = setup(vec![resp(201, message_json())]);
     c.messages()
         .send(&SendMessage::new("+254700000012", "hi"))

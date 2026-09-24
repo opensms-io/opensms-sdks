@@ -96,11 +96,11 @@ describe('1. header injection', () => {
 });
 
 describe('2. base URL', () => {
-  it('defaults to https://api.opensms.io', async () => {
+  it('defaults to https://opensms.io', async () => {
     const { client, calls } = harness([{ status: 200, body: { items: [], next_cursor: null } }]);
-    expect(client.baseUrl).toBe('https://api.opensms.io');
+    expect(client.baseUrl).toBe('https://opensms.io');
     await client.messages.list();
-    expect(calls[0]!.url).toBe('https://api.opensms.io/v1/messages');
+    expect(calls[0]!.url).toBe('https://opensms.io/v1/messages');
   });
   it('strips trailing slashes from a custom base URL', async () => {
     const { client, calls } = harness([{ status: 201, body: message }], { baseUrl: 'http://host/' });
@@ -366,7 +366,7 @@ describe('14. 204 handling', () => {
     const { client, calls } = harness([{ status: 204 }]);
     await expect(client.contacts.delete('c1')).resolves.toBeUndefined();
     expect(calls[0]!.method).toBe('DELETE');
-    expect(calls[0]!.url).toBe('https://api.opensms.io/v1/contacts/c1');
+    expect(calls[0]!.url).toBe('https://opensms.io/v1/contacts/c1');
   });
 });
 
@@ -398,7 +398,7 @@ describe('15. pagination', () => {
       tos.push(item.to);
     }
     expect(tos).toEqual(['+254700000012', undefined]);
-    expect(calls[1]!.url).toBe('https://api.opensms.io/v1/batches/b1/items?limit=1&status=delivered&cursor=n1');
+    expect(calls[1]!.url).toBe('https://opensms.io/v1/batches/b1/items?limit=1&status=delivered&cursor=n1');
   });
   it('decodes a page with nextCursor', async () => {
     const { client } = harness([{ status: 200, body: { items: [{ id: 'a', sender_id: 'X' }], next_cursor: 'n' } }]);
@@ -412,12 +412,12 @@ describe('16. query encoding', () => {
     const { client, calls } = harness([{ status: 200, body: { quote_id: 'sq_1' } }]);
     const q = await client.senderIds.quote({ countries: ['KE', 'NG'] });
     expect(q.quoteId).toBe('sq_1');
-    expect(calls[0]!.url).toBe('https://api.opensms.io/v1/sender-ids/quote?countries=KE,NG');
+    expect(calls[0]!.url).toBe('https://opensms.io/v1/sender-ids/quote?countries=KE,NG');
   });
   it('percent-encodes + and omits unset params', async () => {
     const { client, calls } = harness([{ status: 200, body: { items: [], next_cursor: null } }]);
     await client.messages.list({ status: 'delivered', to: '+2547', cursor: undefined, dateFrom: '2026-01-01' });
-    expect(calls[0]!.url).toBe('https://api.opensms.io/v1/messages?status=delivered&to=%2B2547&date_from=2026-01-01');
+    expect(calls[0]!.url).toBe('https://opensms.io/v1/messages?status=delivered&to=%2B2547&date_from=2026-01-01');
   });
 });
 
@@ -425,7 +425,7 @@ describe('17. path escaping', () => {
   it('escapes path parameters', async () => {
     const { client, calls } = harness([{ status: 200, body: message }]);
     await client.messages.get('a/b');
-    expect(calls[0]!.url).toBe('https://api.opensms.io/v1/messages/a%2Fb');
+    expect(calls[0]!.url).toBe('https://opensms.io/v1/messages/a%2Fb');
   });
   it('rejects an empty id without a request', async () => {
     const { client, calls } = harness([{ status: 200, body: message }]);
@@ -503,7 +503,7 @@ describe('19. batch CSV', () => {
     const csv = 'to,text\n+254700000014,csv run\n';
     const b = await client.batches.createFromCsv(csv);
     expect(b.status).toBe('ready');
-    expect(calls[0]!.url).toBe('https://api.opensms.io/v1/messages/batch');
+    expect(calls[0]!.url).toBe('https://opensms.io/v1/messages/batch');
     expect(calls[0]!.headers['content-type']).toBe('text/csv');
     expect(calls[0]!.body).toBe(csv);
     expect(calls[0]!.headers['idempotency-key']).toMatch(UUID_RE);
@@ -581,7 +581,7 @@ describe('resource wiring', () => {
     await client.analytics.bySenderId({ range: '7d' });
     await client.countries.compliance('KE');
     await client.otp.verify({ otpId: 'o1', code: '123456' });
-    const seen = calls.map((c) => `${c.method} ${c.url.replace('https://api.opensms.io', '')}`);
+    const seen = calls.map((c) => `${c.method} ${c.url.replace('https://opensms.io', '')}`);
     expect(seen).toEqual([
       'PUT /v1/webhooks/w1',
       'POST /v1/webhooks/w1/deliveries/42/replay',

@@ -45,7 +45,7 @@ class OpensmsClientTest {
         HttpTransport.Request r = mt.last();
         assertEquals("Bearer " + KEY, r.header("Authorization"));
         assertEquals("application/json", r.header("Accept"));
-        assertEquals("opensms-java/0.1.0", r.header("User-Agent"));
+        assertEquals("opensms-java/0.1.1", r.header("User-Agent"));
         assertEquals("application/json", r.header("Content-Type"));
         assertNull(r.header("X-Workspace-ID"));
         assertNull(r.header("X-Environment"));
@@ -60,7 +60,7 @@ class OpensmsClientTest {
     // 2
     @Test
     void baseUrl() {
-        assertEquals("https://api.opensms.io", new OpensmsClient(KEY).baseUrl());
+        assertEquals("https://opensms.io", new OpensmsClient(KEY).baseUrl());
         MockTransport mt = new MockTransport().reply(201, MSG);
         OpensmsClient c = OpensmsClient.builder().apiKey(KEY).baseUrl("http://host/").transport(mt).build();
         c.messages().send(new SendMessageParams("+254700000012", "hi"));

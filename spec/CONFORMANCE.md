@@ -211,7 +211,7 @@ zero-delay sleeper that records requested delays.
    `Accept: application/json`, `User-Agent: opensms-<lang>/<version>`; JSON
    calls send `Content-Type: application/json`; no call sends
    `X-Workspace-ID` or `X-Environment`.
-2. **Base URL**: default is `https://api.opensms.io`; a custom
+2. **Base URL**: default is `https://opensms.io`; a custom
    `baseUrl` with a trailing slash produces `http://host/v1/messages`
    (no double slash).
 3. **Key validation**: missing key, `pk_test_x`, `sk_test_short` fail at

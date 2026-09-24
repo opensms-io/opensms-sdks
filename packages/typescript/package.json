@@ -1,6 +1,6 @@
 {
   "name": "@opensms/sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Official TypeScript/JavaScript SDK for the OpenSMS prepaid SMS API: messages, OTP, batches, lookups, contacts, webhooks and more.",
   "type": "module",
   "main": "./dist/cjs/index.js",

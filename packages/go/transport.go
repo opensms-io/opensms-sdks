@@ -18,10 +18,10 @@ import (
 
 const (
 	// Version is the SDK version, sent in the User-Agent header.
-	Version = "0.1.0"
+	Version = "0.1.1"
 
 	// DefaultBaseURL is the production API origin.
-	DefaultBaseURL = "https://api.opensms.io"
+	DefaultBaseURL = "https://opensms.io"
 
 	defaultMaxRetries = 2
 	defaultTimeout    = 30 * time.Second

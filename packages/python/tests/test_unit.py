@@ -113,7 +113,7 @@ def test_headers_are_injected_and_workspace_headers_never_sent():
         assert header(req, "X-Environment") is None
     assert header(t.requests[0], "Content-Type") == "application/json"
     assert header(t.requests[1], "Content-Type") is None
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.1.1"
 
 
 # 2. Base URL
@@ -121,8 +121,8 @@ def test_default_base_url():
     t = MockTransport(resp(200, {"items": [], "next_cursor": None}))
     client = Opensms(KEY, transport=t)
     client.messages.list()
-    assert t.last.url == "https://api.opensms.io/v1/messages"
-    assert client.base_url == "https://api.opensms.io"
+    assert t.last.url == "https://opensms.io/v1/messages"
+    assert client.base_url == "https://opensms.io"
 
 
 def test_custom_base_url_trailing_slash_is_stripped():

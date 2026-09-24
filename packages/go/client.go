@@ -55,7 +55,7 @@ type Client struct {
 // Option configures a Client. Pass options to NewClient.
 type Option func(*transport)
 
-// WithBaseURL overrides the API base URL (default https://api.opensms.io).
+// WithBaseURL overrides the API base URL (default https://opensms.io).
 // Trailing slashes are stripped.
 func WithBaseURL(baseURL string) Option {
 	return func(t *transport) {

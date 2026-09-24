@@ -67,7 +67,7 @@ public final class OpensmsClient {
     /// Create a client with a key and optional overrides.
     public convenience init(
         apiKey: String,
-        baseURL: String = "https://api.opensms.io",
+        baseURL: String = "https://opensms.io",
         timeout: TimeInterval = 30,
         maxRetries: Int = 2,
         session: URLSession = .shared,

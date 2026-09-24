@@ -44,7 +44,7 @@ module Opensms
     attr_reader :base_url
 
     # @param api_key [String] required; "sk_test_..." or "sk_live_..."
-    # @param base_url [String] default "https://api.opensms.io"
+    # @param base_url [String] default "https://opensms.io"
     # @param timeout [Numeric] per-attempt timeout in seconds, default 30
     # @param max_retries [Integer] retries after the first attempt, default 2
     # @param http_client [#call, nil] replaces the Net::HTTP adapter (see {Opensms::NetHttpClient})

@@ -40,7 +40,7 @@ Constructor options:
 | Option | Default | Rule |
 | --- | --- | --- |
 | `apiKey` | required | Must start with `sk_test_` or `sk_live_` and have more than 12 characters after the prefix (mirrors `auth.ValidSecret`). Anything else fails fast with the language's argument error (`TypeError`, `ValueError`, `ArgumentException`, `IllegalArgumentException`, `InvalidArgumentException`, Go returns an `error` from `NewClient`, Rust returns `Err`). No network call. |
-| `baseUrl` | `https://api.opensms.io` | Trailing slashes stripped. The OpenAPI `servers` block only lists `http://localhost:8080`, so the default comes from the code: problem `type` URIs are `https://api.opensms.io/problems/<code>` (`internal/httpx/problempb`) and the landing page and docs use `POST https://api.opensms.io/v1/messages`. |
+| `baseUrl` | `https://opensms.io` | Trailing slashes stripped. The OpenAPI `servers` block only lists `http://localhost:8080`, so the default comes from the live API: `GET https://opensms.io/v1/me` answers 401. The problem `type` base (`https://api.opensms.io/problems/<code>`, from `internal/httpx/problempb`) is a separate RFC 9457 type-URI namespace that does not resolve as a host and must not be used as the default base URL. |
 | `timeout` | 30 s | Per attempt, covers connect and read. |
 | `maxRetries` | 2 | Number of retries after the first attempt (so 3 attempts total). `0` disables retries. |
 | transport hook | platform default | Injectable HTTP client/fetch/handler so unit tests can use a mock transport (TS `fetch`, Python a transport callable over the stdlib `urllib` default with no runtime dependencies, Go `*http.Client`, Java `HttpClient`, .NET `HttpMessageHandler`, etc.). |

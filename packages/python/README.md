@@ -25,7 +25,7 @@ print(message["id"], message["status"], message["price"])   # price is a decimal
 
 A key starting `sk_test_` selects the sandbox, `sk_live_` the live environment; `client.environment`
 reports which one is active, and a malformed key raises `ValueError` before any request is made.
-Other constructor options: `base_url` (default `https://api.opensms.io`), `timeout` (seconds per
+Other constructor options: `base_url` (default `https://opensms.io`), `timeout` (seconds per
 attempt, default 30), `max_retries` (default 2), and `transport` (swap the network layer for tests).
 
 ## More

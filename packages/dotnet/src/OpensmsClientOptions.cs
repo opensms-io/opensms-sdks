@@ -8,7 +8,7 @@ namespace Opensms
     /// <summary>Optional settings for <see cref="OpensmsClient"/>.</summary>
     public sealed class OpensmsClientOptions
     {
-        /// <summary>API base URL. Defaults to <c>https://api.opensms.io</c>; trailing slashes are stripped.</summary>
+        /// <summary>API base URL. Defaults to <c>https://opensms.io</c>; trailing slashes are stripped.</summary>
         public string? BaseUrl { get; set; }
 
         /// <summary>Per-attempt timeout covering connect and read. Defaults to 30 seconds.</summary>

@@ -70,7 +70,7 @@ final class Client
      *     maxRetries?: int,
      *     handler?: callable,
      *     sleep?: callable
-     * } $options baseUrl (default https://api.opensms.io), timeout in seconds
+     * } $options baseUrl (default https://opensms.io), timeout in seconds
      *     per attempt (default 30), maxRetries after the first attempt
      *     (default 2), handler (replaces the cURL handler, see
      *     {@see CurlHandler}), sleep (callable(float $seconds), for tests).

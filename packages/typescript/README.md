@@ -32,7 +32,7 @@ sends cost `0.000000`), `sk_live_` keys send for real. `opensms.environment` is 
 ```ts
 new Opensms({
   apiKey: 'sk_test_...',              // required, starts with sk_test_ or sk_live_
-  baseUrl: 'https://api.opensms.io',  // default
+  baseUrl: 'https://opensms.io',  // default
   timeoutMs: 30_000,                  // per attempt, default
   maxRetries: 2,                      // retries after the first attempt, default
   fetch: customFetch,                 // custom fetch (tests, polyfills)

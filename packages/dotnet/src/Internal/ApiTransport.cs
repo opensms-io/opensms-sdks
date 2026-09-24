@@ -43,8 +43,8 @@ namespace Opensms.Internal
     /// </summary>
     internal sealed class ApiTransport : IDisposable
     {
-        public const string DefaultBaseUrl = "https://api.opensms.io";
-        public const string Version = "0.1.0";
+        public const string DefaultBaseUrl = "https://opensms.io";
+        public const string Version = "0.1.1";
         public const string UserAgent = "opensms-dotnet/" + Version;
 
         private static readonly HttpMethod Patch = new HttpMethod("PATCH");

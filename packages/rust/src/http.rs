@@ -22,7 +22,7 @@ use serde::Serialize;
 use crate::error::{OpensmsError, Result};
 use crate::util;
 
-pub(crate) const DEFAULT_BASE_URL: &str = "https://api.opensms.io";
+pub(crate) const DEFAULT_BASE_URL: &str = "https://opensms.io";
 /// The `User-Agent` sent on every request.
 pub const USER_AGENT: &str = concat!("opensms-rust/", env!("CARGO_PKG_VERSION"));
 const MAX_RETRY_AFTER_SECS: u64 = 60;

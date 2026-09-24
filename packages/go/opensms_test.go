@@ -133,7 +133,7 @@ func TestHeaders(t *testing.T) {
 		if got := r.header.Get("Accept"); got != "application/json" {
 			t.Errorf("req %d Accept = %q", i, got)
 		}
-		if got := r.header.Get("User-Agent"); got != "opensms-go/0.1.0" {
+		if got := r.header.Get("User-Agent"); got != "opensms-go/0.1.1" {
 			t.Errorf("req %d User-Agent = %q", i, got)
 		}
 		if r.header.Get("X-Workspace-ID") != "" || r.header.Get("X-Environment") != "" {
@@ -154,7 +154,7 @@ func TestBaseURL(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if c.transport.baseURL != "https://api.opensms.io" {
+	if c.transport.baseURL != "https://opensms.io" {
 		t.Fatalf("default base URL = %q", c.transport.baseURL)
 	}
 	h := newHarness(t, []mockResponse{ok(200, `{"items":[],"next_cursor":null}`)}, WithBaseURL("http://host/"))

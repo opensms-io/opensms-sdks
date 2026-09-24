@@ -22,7 +22,7 @@ export type DateInput = Date | string;
 export interface OpensmsOptions {
   /** Secret API key: `sk_test_...` (sandbox) or `sk_live_...` (live). */
   apiKey: string;
-  /** API base URL. Defaults to `https://api.opensms.io`. Trailing slashes are stripped. */
+  /** API base URL. Defaults to `https://opensms.io`. Trailing slashes are stripped. */
   baseUrl?: string;
   /** Per-attempt timeout in milliseconds, covering connect and read. Defaults to `30000`. */
   timeoutMs?: number;

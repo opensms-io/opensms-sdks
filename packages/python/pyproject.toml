@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "opensms"
-version = "0.1.0"
+version = "0.1.1"
 description = "Official Python client for OpenSMS, the prepaid SMS API: send messages, OTPs, batches and lookups across Africa."
 readme = "README.md"
 requires-python = ">=3.8"
