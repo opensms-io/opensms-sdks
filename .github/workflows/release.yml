@@ -1,0 +1,175 @@
+name: release
+
+# Per-package releases via tag prefix. Tests gate every release.
+#   git tag ts-v0.1.0     && git push origin ts-v0.1.0     -> @opensms/sdk to npm
+#   git tag py-v0.1.0     && git push origin py-v0.1.0     -> opensms to PyPI
+#   git tag dotnet-v0.1.0 && git push origin dotnet-v0.1.0 -> Opensms to NuGet
+#   git tag rust-v0.1.0   && git push origin rust-v0.1.0   -> opensms to crates.io
+#   git tag ruby-v0.1.0   && git push origin ruby-v0.1.0   -> opensms to RubyGems
+#   git tag java-v0.1.0   -> tests only until Maven Central publishing is configured
+#   git tag php-v0.1.0 / swift-v0.1.0 / go-v0.1.0 -> tests only; these clients are
+#   consumed from their own mirror repos (see RELEASING.md)
+# Nothing publishes until the registry accounts and secrets in RELEASING.md exist.
+on:
+  push:
+    tags:
+      - 'ts-v*'
+      - 'py-v*'
+      - 'dotnet-v*'
+      - 'rust-v*'
+      - 'ruby-v*'
+      - 'java-v*'
+      - 'php-v*'
+      - 'swift-v*'
+      - 'go-v*'
+
+jobs:
+  # ---- TypeScript -> npm with provenance (needs NPM_TOKEN) ----
+  npm:
+    if: startsWith(github.ref, 'refs/tags/ts-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/typescript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # ---- Python -> PyPI via Trusted Publishing (OIDC, no token) ----
+  pypi:
+    if: startsWith(github.ref, 'refs/tags/py-v')
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -e ".[dev]" build
+      - run: python -m pytest
+      - run: python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: packages/python/dist/
+
+  # ---- .NET -> NuGet (needs NUGET_API_KEY) ----
+  nuget:
+    if: startsWith(github.ref, 'refs/tags/dotnet-v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet test packages/dotnet/tests/Opensms.Tests.csproj -c Release
+      - run: dotnet pack packages/dotnet/Opensms.csproj -c Release -o out
+      - run: dotnet nuget push "out/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
+
+  # ---- Rust -> crates.io (needs CARGO_REGISTRY_TOKEN for the first publish) ----
+  crates:
+    if: startsWith(github.ref, 'refs/tags/rust-v')
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/rust
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test
+      - run: cargo publish
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+  # ---- Ruby -> RubyGems via Trusted Publishing (OIDC) ----
+  rubygems:
+    if: startsWith(github.ref, 'refs/tags/ruby-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/ruby
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+          working-directory: packages/ruby
+      - run: bundle exec rake test
+      - uses: rubygems/release-gem@v1
+        with:
+          working-directory: packages/ruby
+
+  # ---- Java: tests gate the tag; Maven Central publishing is not configured yet ----
+  java:
+    if: startsWith(github.ref, 'refs/tags/java-v')
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/java
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: mvn -B package
+
+  # ---- Git-resolved clients: the tag is the release; gate on tests ----
+  php:
+    if: startsWith(github.ref, 'refs/tags/php-v')
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/php
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - run: composer install --no-interaction
+      - run: ./vendor/bin/phpunit --testsuite unit
+
+  swift:
+    if: startsWith(github.ref, 'refs/tags/swift-v')
+    runs-on: macos-14
+    defaults:
+      run:
+        working-directory: packages/swift
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test
+
+  go:
+    if: startsWith(github.ref, 'refs/tags/go-v')
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/go
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - run: go vet ./...
+      - run: go test ./...
