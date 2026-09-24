@@ -1,0 +1,16 @@
+node_modules/
+dist/
+target/
+build/
+.build/
+bin/
+obj/
+vendor/
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+.gradle/
+Cargo.lock
+.env
+.DS_Store
