@@ -3,8 +3,8 @@
 Official PHP client for [opensms](https://opensms.io): prepaid SMS for Africa.
 
 PHP 8.1+, zero runtime dependencies beyond `ext-curl` and `ext-json`. See the
-[monorepo README](../../README.md) for the other eight SDKs and the
-[API surface](../../spec/SURFACE.md) they all implement.
+[monorepo README](https://github.com/opensms-io/opensms-sdks) for the other eight SDKs and the
+[API surface](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) they all implement.
 
 ## Install
 

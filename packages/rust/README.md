@@ -376,7 +376,7 @@ cargo test --test live -- --nocapture   # live conformance scenario
 ```
 
 The live suite runs against a sandbox and is skipped unless `OPENSMS_BASE_URL` and `OPENSMS_API_KEY`
-are set. See the monorepo [README](../../README.md) and [`spec/SURFACE.md`](../../spec/SURFACE.md)
+are set. See the monorepo [README](https://github.com/opensms-io/opensms-sdks) and [`spec/SURFACE.md`](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md)
 for the full API surface this SDK implements.
 
 ## License

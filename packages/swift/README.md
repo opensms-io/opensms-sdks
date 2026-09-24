@@ -42,8 +42,8 @@ sandbox, `sk_live_...` keys are live (`opensms.environment`, `"sandbox"` or
 `"live"`). A key with neither prefix throws `OpensmsArgumentError` at
 construction, before any request. Construct the client once and reuse it.
 
-See [`../../spec/SURFACE.md`](../../spec/SURFACE.md) for the full API surface
-and [`../../README.md`](../../README.md) for the other language SDKs.
+See [`../../spec/SURFACE.md`](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the full API surface
+and [`../../README.md`](https://github.com/opensms-io/opensms-sdks) for the other language SDKs.
 
 ## More
 

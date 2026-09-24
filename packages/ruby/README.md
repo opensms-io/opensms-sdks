@@ -40,7 +40,7 @@ API rejects unknown fields. Time-like inputs (`scheduled_at`, `date_from`,
 
 ## More
 
-One example per resource. See [`../../spec/SURFACE.md`](../../spec/SURFACE.md)
+One example per resource. See [`../../spec/SURFACE.md`](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md)
 for the full surface.
 
 ### messages
@@ -292,8 +292,8 @@ rake test         # offline unit tests, no network
 rake integration  # live scenario against a sandbox; skipped unless OPENSMS_BASE_URL and OPENSMS_API_KEY are set
 ```
 
-See the monorepo [root README](../../README.md) and
-[`../../spec/SURFACE.md`](../../spec/SURFACE.md) for the API surface this
+See the monorepo [root README](https://github.com/opensms-io/opensms-sdks) and
+[`../../spec/SURFACE.md`](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the API surface this
 SDK implements.
 
 ## License

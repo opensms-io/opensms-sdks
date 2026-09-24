@@ -3,8 +3,8 @@
 Official Go client for [opensms](https://opensms.io): prepaid SMS for Africa.
 
 Requires Go 1.21+. Standard library only, no dependencies. See the
-[monorepo overview](../../README.md) for what every language client shares, and
-[spec/SURFACE.md](../../spec/SURFACE.md) for the full method and field list this client wraps.
+[monorepo overview](https://github.com/opensms-io/opensms-sdks) for what every language client shares, and
+[spec/SURFACE.md](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the full method and field list this client wraps.
 
 ## Install
 

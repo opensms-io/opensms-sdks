@@ -44,7 +44,7 @@ build with `OpensmsClient.builder()...build()`. The client is thread-safe; creat
 ## More
 
 One short example per resource, in the order the client exposes them. Full parameter lists are in
-the Javadoc and [spec/SURFACE.md](../../spec/SURFACE.md).
+the Javadoc and [spec/SURFACE.md](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md).
 
 ### messages
 
@@ -259,7 +259,7 @@ mvn -B test                             # unit tests, no network
 mvn -B test -Dtest=LiveConformanceTest  # live suite; skipped unless OPENSMS_BASE_URL and OPENSMS_API_KEY are set
 ```
 
-See the [monorepo README](../../README.md) and [spec/SURFACE.md](../../spec/SURFACE.md) for the
+See the [monorepo README](https://github.com/opensms-io/opensms-sdks) and [spec/SURFACE.md](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the
 full API surface.
 
 ## License

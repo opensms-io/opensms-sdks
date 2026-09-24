@@ -5,8 +5,8 @@ Official TypeScript client for [opensms](https://opensms.io): prepaid SMS for Af
 Zero runtime dependencies. Requires Node 18+ (or Bun, Deno, or any edge runtime with `fetch`).
 Ships ESM and CommonJS builds with type definitions.
 
-See the [monorepo root](../../README.md) for the other eight language clients, and
-[`spec/SURFACE.md`](../../spec/SURFACE.md) for the full API surface this SDK wraps.
+See the [monorepo root](https://github.com/opensms-io/opensms-sdks) for the other eight language clients, and
+[`spec/SURFACE.md`](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the full API surface this SDK wraps.
 
 ## Install
 

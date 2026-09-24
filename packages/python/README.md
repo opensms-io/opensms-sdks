@@ -3,8 +3,8 @@
 Official Python client for [opensms](https://opensms.io): prepaid SMS for Africa.
 
 Pure standard library: no runtime dependencies. Python 3.8+. Fully typed (`py.typed`).
-See the [monorepo README](../../README.md) for the other SDKs and
-[spec/SURFACE.md](../../spec/SURFACE.md) for the full API surface.
+See the [monorepo README](https://github.com/opensms-io/opensms-sdks) for the other SDKs and
+[spec/SURFACE.md](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the full API surface.
 
 ## Install
 

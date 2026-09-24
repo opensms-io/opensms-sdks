@@ -4,8 +4,8 @@ Official .NET client for [opensms](https://opensms.io): prepaid SMS for Africa.
 
 Targets `net8.0`. No dependencies beyond the .NET base class library.
 
-See the [monorepo README](../../README.md) for the other language SDKs, and
-[spec/SURFACE.md](../../spec/SURFACE.md) for the full API surface this client wraps.
+See the [monorepo README](https://github.com/opensms-io/opensms-sdks) for the other language SDKs, and
+[spec/SURFACE.md](https://github.com/opensms-io/opensms-sdks/blob/main/spec/SURFACE.md) for the full API surface this client wraps.
 
 ## Install
 
