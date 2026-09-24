@@ -31,3 +31,13 @@ publishes when they pass. None of the packages has been published yet.
 Go modules, Packagist and SwiftPM resolve a package from the root of a git repository, so a
 client inside `packages/` cannot be installed from this monorepo. Their source is developed here
 and copied to the mirror repo on release, where the version tag is pushed.
+
+Sync a mirror from committed `main` with `scripts/mirror.sh go` (or `swift`, `php`). It replaces
+the mirror's contents with `packages/<lang>` and pushes a commit named after the source revision.
+To release, sync first, then tag the mirror: Go and PHP use `vX.Y.Z`, Swift uses `X.Y.Z`.
+
+| Mirror | Installs as |
+|---|---|
+| [opensms-io/opensms-go](https://github.com/opensms-io/opensms-go) | `go get github.com/opensms-io/opensms-go` |
+| [opensms-io/opensms-swift](https://github.com/opensms-io/opensms-swift) | `.package(url: "https://github.com/opensms-io/opensms-swift", from: "0.1.0")` |
+| [opensms-io/opensms-php](https://github.com/opensms-io/opensms-php) | `composer require opensms/opensms-php` (after registering on Packagist) |

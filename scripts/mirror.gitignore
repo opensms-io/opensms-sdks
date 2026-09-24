@@ -1,0 +1,6 @@
+vendor/
+.build/
+.swiftpm/
+composer.lock
+.phpunit.cache/
+.DS_Store
