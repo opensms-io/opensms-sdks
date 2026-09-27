@@ -79,12 +79,12 @@ Status meaning on the key surface:
 | 400 | validation (`invalid JSON`, `to must be an E.164 phone number`, `invalid cursor`, missing Idempotency-Key) |
 | 401 | bad or missing key (`missing or invalid API key`); also **insufficient scope on messages and otp** (`insufficient scope`) |
 | 402 | insufficient balance or spend cap (live) |
-| 403 | insufficient scope everywhere else; sandbox send before email verification (`email verification is required for sandbox sending`); workspace not live |
+| 403 | insufficient scope everywhere else; sandbox send before email verification (`email verification is required for sandbox sending`); workspace not live; traffic type not allowed for the account, for example marketing on an account verified as an individual (`this traffic type is not available for this account. ...`) |
 | 404 | unknown id (`message not found`, `batch not found`, ...) |
 | 409 | Idempotency-Key reused with a different body; illegal state change (`message cannot be cancelled in its current state`) |
 | 410 | webhook or group-send snapshot expired |
 | 413 | upload too large |
-| 422 | business rule (`destination is suppressed`, `This operation requires the live environment.`, `sandbox wallets cannot use payment providers`) |
+| 422 | business rule (`destination is suppressed`, `This operation requires the live environment.`, `sandbox wallets cannot use payment providers`, `no approved default sender_id is configured for this destination. ...` when no `sender_id` is passed and the market has no shared sender) |
 | 429 | rate limited, with `Retry-After` |
 | 5xx | `database unavailable`, `rate limiter unavailable`, `503 temporarily_unavailable` |
 
